@@ -1,1 +1,3 @@
 The purpose of this project is to learn, test GIT.
+
+Let's practice to use git diff command.
