@@ -3,3 +3,5 @@ The purpose of this project is to learn, test GIT.
 Let's practice to use git diff command.
 
 first command: git init
+
+there I'm learning to use git branch command
