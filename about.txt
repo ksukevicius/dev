@@ -9,4 +9,6 @@ there I'm learning to use git branch command
 just adding new line here
 
 this line only in master
+this line just in br3, and there was a commit to master after br3 was created
+I want to keep both lines (master and br3)
 
