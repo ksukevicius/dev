@@ -4,4 +4,4 @@ Let's practice to use git diff command.
 
 first command: git init
 
-branching
+there I'm learning to use git branch command
