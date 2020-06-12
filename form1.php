@@ -1,16 +1,10 @@
 <?php
+require 'functions.php';
 // Connects to the XE service (i.e. database) on the "localhost" machine
 $conn = oci_connect('system', 'rastam80', 'localhost/orcl');
 if (!$conn) {
     $e = oci_error();
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-}
-
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
 }
 ?>
 
@@ -23,10 +17,12 @@ if (isset($_POST["submit"])) {
 	echo "<hr />";
 	
 	$cname = test_input($_POST["cname"]);
-	$stid = oci_parse($conn, "insert into C##Kestas.companies (cname) values(:cname)");
+	$remember = $_POST["remember"];
+	$stid = oci_parse($conn, "insert into C##Kestas.companies (cname, remember) values(:cname, :remember)");
 	//$stid = oci_parse($conn, "insert into C##Kestas.companies (cname) values({$cname})");
 	
 	oci_bind_by_name($stid, ':cname', $cname);
+	oci_bind_by_name($stid, ':remember', $remember);
 	// for the second case don't need oci_bind_by_name
 	// need to find out better way
 	oci_execute($stid);
@@ -59,7 +55,7 @@ if (isset($_POST["submit"])) {
     </div>
     <div class="form-group form-check">
       <label class="form-check-label">
-        <input class="form-check-input" type="checkbox" name="remember"> Remember me
+        <input class="form-check-input" type="checkbox" name="remember" value=1> Remember me
       </label>
     </div>
     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
@@ -69,11 +65,17 @@ if (isset($_POST["submit"])) {
 <div class="container">
 	<h4>There is list of companies</h4>
 	<?php
-	$stid = oci_parse($conn, 'select * from C##Kestas.companies');
-	
+	$stid = oci_parse($conn, 'select * from C##Kestas.companies ORDER BY ID');
 	oci_execute($stid);
-
-	echo "<table border='1'>\n";
+	?>
+	<table class='table table-striped'>
+	<thead>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Insert date</th>
+	</thead>
+	<tbody>
+	<?php
 	while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 		echo "<tr>\n";
 		echo "<td>" . $row['ID'] ."</td>";
@@ -86,6 +88,7 @@ if (isset($_POST["submit"])) {
 		*/
 		echo "</tr>\n";
 	}
+	echo "</tbody>";
 	echo "</table>\n";
 
 	?>
