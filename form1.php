@@ -5,6 +5,13 @@ if (!$conn) {
     $e = oci_error();
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 }
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
 ?>
 
 <?php
@@ -15,7 +22,7 @@ if (isset($_POST["submit"])) {
 	var_dump($_POST);
 	echo "<hr />";
 	
-	$cname = $_POST["cname"];
+	$cname = test_input($_POST["cname"]);
 	$stid = oci_parse($conn, "insert into C##Kestas.companies (cname) values(:cname)");
 	//$stid = oci_parse($conn, "insert into C##Kestas.companies (cname) values({$cname})");
 	
@@ -69,9 +76,14 @@ if (isset($_POST["submit"])) {
 	echo "<table border='1'>\n";
 	while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 		echo "<tr>\n";
+		echo "<td>" . $row['ID'] ."</td>";
+		echo "<td>" . $row['CNAME'] ."</td>";
+		echo "<td>" . $row['INSERT_DATE'] ."</td>";
+		/*
 		foreach ($row as $item) {
 			echo "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
 		}
+		*/
 		echo "</tr>\n";
 	}
 	echo "</table>\n";
