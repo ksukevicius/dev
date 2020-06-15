@@ -28,3 +28,6 @@ git pull = git fetch + git merge
 
 editinam sita faila, pacomitinsim o paskui bandysim checkout tag v1.0.0 ir sito pakeitimo turi nebut
 
+proposed change in new branch, later will add this to master
+
+
