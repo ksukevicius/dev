@@ -1,3 +1,10 @@
 There I will continue learn git.
 This is new file in br3 not yet present in master.
 Let's add, commit it and merge to master.
+
+kai zutvirtinsiu visas git komandas tada galima pasimokyt ir susikurt alaias
+daznai naudojamom komandos
+
+nu va, naujas text editorius vim
+
+dar kazkaip sudetinga su vim
