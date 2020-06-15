@@ -1,7 +1,8 @@
 <?php
 require 'functions.php';
 // Connects to the XE service (i.e. database) on the "localhost" machine
-$conn = oci_connect('system', 'rastam80', 'localhost/orcl');
+// IMPORTANT to have charset 'AL32UTF8'
+$conn = oci_connect('system', 'rastam80', 'localhost/orcl','AL32UTF8');
 if (!$conn) {
     $e = oci_error();
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
@@ -11,8 +12,7 @@ if (!$conn) {
 <?php
 // There we will check if form was submited
 if (isset($_POST["submit"])) {
-	echo "Form was submitted";
-	echo "<hr />";
+	// just for debuging
 	var_dump($_POST);
 	echo "<hr />";
 	
@@ -73,6 +73,7 @@ if (isset($_POST["submit"])) {
 		<th>ID</th>
 		<th>Name</th>
 		<th>Insert date</th>
+		<th>Updated</th>
 	</thead>
 	<tbody>
 	<?php
@@ -81,6 +82,7 @@ if (isset($_POST["submit"])) {
 		echo "<td>" . $row['ID'] ."</td>";
 		echo "<td>" . $row['CNAME'] ."</td>";
 		echo "<td>" . $row['INSERT_DATE'] ."</td>";
+		echo "<td>" . $row['UPDATE_DATE'] ."</td>";
 		/*
 		foreach ($row as $item) {
 			echo "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
