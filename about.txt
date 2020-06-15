@@ -23,3 +23,6 @@ Ok. dabar noriu pabandyti change kaip kestutis.sukevicius@gmail.com
 cia jau naujas accountas github
 
 reikia praktikuotis su push ir pull fetch clone
+
+git pull = git fetch + git merge
+
