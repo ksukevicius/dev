@@ -14,3 +14,7 @@ I want to keep both lines (master and br3)
 
 Learning git remote
 And will start using new user "Developer1" to practice coloboration
+
+git push origin :non_tracking
+// : - pries branch name (:non_tracking) liepia git istrinti brancha
+pabandykim kaip tai veikia
