@@ -10,7 +10,10 @@
 		  <a class="nav-link" href="form1.php">Form1</a>
 		</li>
 		<li class="nav-item">
-		  <a class="nav-link" href="#">Link 3</a>
+		  <a class="nav-link" href="notes.php">Notes</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" href="notes_new.php">New Note</a>
 		</li>
 	</ul>
 
