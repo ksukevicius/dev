@@ -8,3 +8,5 @@ daznai naudojamom komandos
 nu va, naujas text editorius vim
 
 dar kazkaip sudetinga su vim
+
+git tag komanda islistina sukurtus tagus
