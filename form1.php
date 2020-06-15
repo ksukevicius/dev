@@ -41,60 +41,64 @@ if (isset($_POST["submit"])) {
 </head>
 <body>
 
-<div class="container">
-	The purpose of this page is to remember Bootstrap and to learn connection to oracle database.
-	Submit the form and save some data there.
-</div>
-
-<div class="container">
-  <h2>Stacked form</h2>
-  <form action="form1.php" method="post">
-    <div class="form-group">
-      <label for="email">Company name:</label>
-      <input type="text" class="form-control" id="cname" placeholder="Enter company name" name="cname">
-    </div>
-    <div class="form-group form-check">
-      <label class="form-check-label">
-        <input class="form-check-input" type="checkbox" name="remember" value=1> Remember me
-      </label>
-    </div>
-    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
-
-<div class="container">
-	<h4>There is list of companies</h4>
 	<?php
-	$stid = oci_parse($conn, 'select * from C##Kestas.companies ORDER BY ID');
-	oci_execute($stid);
+	include 'includes/menu.php';
 	?>
-	<table class='table table-striped'>
-	<thead>
-		<th>ID</th>
-		<th>Name</th>
-		<th>Insert date</th>
-		<th>Updated</th>
-	</thead>
-	<tbody>
-	<?php
-	while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
-		echo "<tr>\n";
-		echo "<td>" . $row['ID'] ."</td>";
-		echo "<td>" . $row['CNAME'] ."</td>";
-		echo "<td>" . $row['INSERT_DATE'] ."</td>";
-		echo "<td>" . $row['UPDATE_DATE'] ."</td>";
-		/*
-		foreach ($row as $item) {
-			echo "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
+
+	<div class="container">
+		The purpose of this page is to remember Bootstrap and to learn connection to oracle database.
+		Submit the form and save some data there.
+	</div>
+
+	<div class="container">
+	  <h2>Stacked form</h2>
+	  <form action="form1.php" method="post">
+		<div class="form-group">
+		  <label for="email">Company name:</label>
+		  <input type="text" class="form-control" id="cname" placeholder="Enter company name" name="cname">
+		</div>
+		<div class="form-group form-check">
+		  <label class="form-check-label">
+			<input class="form-check-input" type="checkbox" name="remember" value=1> Remember me
+		  </label>
+		</div>
+		<button type="submit" name="submit" class="btn btn-primary">Submit</button>
+	  </form>
+	</div>
+
+	<div class="container">
+		<h4>There is list of companies</h4>
+		<?php
+		$stid = oci_parse($conn, 'select * from C##Kestas.companies ORDER BY ID');
+		oci_execute($stid);
+		?>
+		<table class='table table-striped'>
+		<thead>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Insert date</th>
+			<th>Updated</th>
+		</thead>
+		<tbody>
+		<?php
+		while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
+			echo "<tr>\n";
+			echo "<td>" . $row['ID'] ."</td>";
+			echo "<td>" . $row['CNAME'] ."</td>";
+			echo "<td>" . $row['INSERT_DATE'] ."</td>";
+			echo "<td>" . $row['UPDATE_DATE'] ."</td>";
+			/*
+			foreach ($row as $item) {
+				echo "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
+			}
+			*/
+			echo "</tr>\n";
 		}
-		*/
-		echo "</tr>\n";
-	}
-	echo "</tbody>";
-	echo "</table>\n";
+		echo "</tbody>";
+		echo "</table>\n";
 
-	?>
-</div>
+		?>
+	</div>
 
 
 </body>
