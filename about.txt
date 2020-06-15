@@ -26,3 +26,5 @@ reikia praktikuotis su push ir pull fetch clone
 
 git pull = git fetch + git merge
 
+editinam sita faila, pacomitinsim o paskui bandysim checkout tag v1.0.0 ir sito pakeitimo turi nebut
+
