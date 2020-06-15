@@ -18,3 +18,6 @@ And will start using new user "Developer1" to practice coloboration
 git push origin :non_tracking
 // : - pries branch name (:non_tracking) liepia git istrinti brancha
 pabandykim kaip tai veikia
+
+Ok. dabar noriu pabandyti change kaip kestutis.sukevicius@gmail.com
+cia jau naujas accountas github
