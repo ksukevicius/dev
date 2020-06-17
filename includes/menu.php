@@ -15,6 +15,12 @@
 		<li class="nav-item">
 		  <a class="nav-link" href="notes_new.php">New Note</a>
 		</li>
+		<li class="nav-item">
+		  <a class="nav-link" href="image_new.php">Upload image</a>
+		</li>		
+		<li class="nav-item">
+		  <a class="nav-link" href="gd_library.php">Gd library</a>
+		</li>			
 	</ul>
 
 </nav> 
